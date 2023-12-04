@@ -15,7 +15,7 @@ let users = [
 
 let blogs = [{
     "user_id": "e621217d-51e8-4990-ae8b-929d52cd8a62",
-    "title": "How to get away with murder",
+    "title": "How to get away with anything",
     "blog_id": "00068bcd-7903-420f-ba81-7a1707a2a0ce",
     "user": "e621217d-51e8-4990-ae8b-929d52cd8a62"
 }]
