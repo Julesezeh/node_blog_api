@@ -110,6 +110,12 @@ app.patch("/blogs/:blog_id", IsBlogIDPresent, (req, res) => {
     res.send(blog)
 })
 
+app.delete("/blogs/:blog_id", IsBlogIDPresent, (req, res) => {
+    const { blog_id } = req.params;
+    blogs = blogs.filter((blog) => blog.blog_id != blog_id)
+    res.status(200).send("<h1>This resource has been deleted</h1>")
+})
+
 
 app.listen(3000, () => {
     console.log("server is listening on localhost:3000");
