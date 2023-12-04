@@ -74,6 +74,13 @@ app.patch("/users/:id", IsIdPresent, (req, res) => {
     res.send(user)
 })
 
+app.delete("/users/:id", IsIdPresent, (req, res) => {
+    const { id } = req.params;
+    users = users.filter((user) => user.id != id)
+    res.status(200).send("<h1>This resource has been deleted</h1>")
+
+})
+
 
 //BLOG ENDPOINTS
 app.get("/blogs", (req, res) => {
