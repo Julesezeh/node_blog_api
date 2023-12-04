@@ -1,6 +1,7 @@
 const express = require("express");
 const { v4: uuid } = require("uuid")
-const IsIdPresent = require("./userIDPassedMiddleWare");
+const IsIdPresent = require("./Middleware/userIDPassedMiddleWare");
+const IsBlogIDPresent = require("./Middleware/blogIDPassedMiddleWare");
 const app = express();
 
 app.use(express.json())
@@ -25,13 +26,13 @@ let blogs = [{
     "user_id": "e621217d-51e8-4990-ae8b-929d52cd8a62",
     "title": "How to get away with anything",
     "blog_id": "00068bcd-7903-420f-ba81-7a1707a2a0ce",
-    "user": "e621217d-51e8-4990-ae8b-929d52cd8a62"
+
 },
 {
     "user_id": "e621217d-51e8-4990-ae8b-929d52cd8a62",
     "title": "Are the theories in rich Dad, Poor Dad a Myth?",
     "blog_id": "0b00375b-1b69-492c-aeb9-13d4f504f43e",
-    "user": "e621217d-51e8-4990-ae8b-929d52cd8a62"
+
 }
 ]
 
@@ -96,10 +97,10 @@ app.post("/blogs", IsIdPresent, (req, res) => {
 })
 
 
-app.patch("/blogs/:blog_id", () => {
+app.patch("/blogs/:blog_id", IsBlogIDPresent, (req, res) => {
     const { blog_id } = req.params;
     const { title, description } = req.body;
-    const blog = blogs.find((blog) => blog.id == blog_id)
+    const blog = blogs.find((blog) => blog.blog_id == blog_id)
     if (title) {
         blog.title = title;
     }
